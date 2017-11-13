@@ -17,8 +17,8 @@
 	</settings>
 	<!--别名-->
 	<typeAliases>
-		<typeAlias type="com.xianle.com.xianle.common.db.mybatis.plugin.table.Datas" alias="datas"></typeAlias>
-		<typeAlias type="com.xianle.com.xianle.common.db.mybatis.plugin.table.ParamModel" alias="paramDatas"></typeAlias>
+		<typeAlias type="com.xianle.common.db.mybatis.plugin.table.Datas" alias="datas"></typeAlias>
+		<typeAlias type="com.xianle.common.db.mybatis.plugin.table.ParamModel" alias="paramDatas"></typeAlias>
 		<!--<typeAlias type="com.xianle.com.xianle.common.db.mybatis.plugin.table.DatasMapper" alias="datasMapper"></typeAlias>-->
 	</typeAliases>
 	<!--插件-->

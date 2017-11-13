@@ -1,4 +1,4 @@
-package com.xianle.com.xianle.common.db.mybatis.plugin.table;
+package com.xianle.common.db.mybatis.plugin.table;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +12,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
 
 /**

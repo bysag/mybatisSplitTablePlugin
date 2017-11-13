@@ -1,4 +1,4 @@
-package com.xianle.com.xianle.common.db.mybatis.plugin.table;
+package com.xianle.common.db.mybatis.plugin.table;
 
 import java.util.List;
 
