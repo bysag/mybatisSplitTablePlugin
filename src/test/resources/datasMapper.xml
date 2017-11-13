@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xianle.com.xianle.common.db.mybatis.plugin.table.DatasMapper">
+	<sql id="getTableName">
+		${tableName}
+	</sql>
+
+	<delete id="deleteAll" parameterType="paramDatas">
+		delete from <include refid="getTableName"/>
+	</delete>
+
+	<select id="lists" parameterType="paramDatas"
+			resultType="datas">
+		select * from
+		<include refid="getTableName"/>
+		where name=#{name}
+	</select>
+
+	<insert id="insert" parameterType="datas">
+	insert INTO <include refid="getTableName"/> (name,value,create_time) values(#{name},#{value},#{createTime});
+	</insert>
+
+	<update id="updateValue" parameterType="map">
+		update ${paramDatas.tableName}
+		set value=#{newValue},create_time=now() where name=#{paramDatas.name}
+	</update>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 这个配置使全局的映射器启用或禁用缓存 -->
+		<setting name="cacheEnabled" value="false"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<!-- 允许JDBC支持生成的键。需要适合的驱动。如果设置为true则这个设置强制生成的键被使用，尽管一些驱动拒绝兼容但仍然有效（比如Derby） -->
+		<setting name="useGeneratedKeys" value="true"/>
+		<!-- 配置默认的执行器。SIMPLE执行器没有什么特别之处。REUSE执行器重用预处理语句。BATCH执行器重用语句和批量更新 -->
+		<setting name="safeRowBoundsEnabled" value="false"/>
+		<setting name="defaultExecutorType" value="REUSE"/>
+		<!-- 设置超时时间，它决定驱动等待一个数据库响应的时间 -->
+		<setting name="defaultStatementTimeout" value="3"/>
+	</settings>
+	<!--别名-->
+	<typeAliases>
+		<typeAlias type="com.xianle.com.xianle.common.db.mybatis.plugin.table.Datas" alias="datas"></typeAlias>
+		<typeAlias type="com.xianle.com.xianle.common.db.mybatis.plugin.table.ParamModel" alias="paramDatas"></typeAlias>
+		<!--<typeAlias type="com.xianle.com.xianle.common.db.mybatis.plugin.table.DatasMapper" alias="datasMapper"></typeAlias>-->
+	</typeAliases>
+	<!--插件-->
+	<plugins>
+		<!--分表-->
+		<plugin interceptor="com.xianle.common.db.mybatis.plugin.table.SplitTableMybatisInterceptor">
+			<property name="splitTableContext" value="com.xianle.common.db.mybatis.plugin.table.SplitTableContext"/>
+		</plugin>
+	</plugins>
+	<!-- jdbc环境 -->
+	<environments default="dev">
+		<environment id="dev">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/mybatisSplitTablePluginDB"/>
+				<property name="username" value="root"/>
+				<property name="password" value=""/>
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="./datasMapper.xml"></mapper>
+	</mappers>
+</configuration>
